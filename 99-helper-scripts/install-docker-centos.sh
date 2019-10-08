@@ -42,19 +42,13 @@ check_for_tool()
     fi
 }
 
-install_git()
-{
-    # Install Git
-    echo_header " Installing Git..."
-    sudo yum -y install git
-}
 install_docker()
 {
     # Install Docker
     echo_header " Installing Docker..."
-    sudo yum -y update
-    sudo yum -y install yum-utils device-mapper-persistent-data lvm2
-    sudo yum -y install docker-ce
+    sudo yum update
+    sudo yum install yum-utils device-mapper-persistent-data lvm2
+    sudo yum install docker-ce
 }
 
 install_docker_compose()
@@ -71,14 +65,14 @@ install_jq()
 {
     # Install jq
     echo_header " Installing jq..."
-    sudo yum -y install jq
+    sudo yum install jq -y
 }
 
 install_jwt()
 {
     # Install jwt
     echo_header " Installing jwt..."
-    sudo yum -y install python-jwt
+    sudo yum install python-jwt -y
 }
 
 install_aws_cli()
@@ -116,7 +110,7 @@ gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg
        https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
 EOF
 
-    sudo yum -y install google-cloud-sdk
+    sudo yum install google-cloud-sdk -y
 }
 
 install_azure_cli()
@@ -125,7 +119,7 @@ install_azure_cli()
     echo_header " Installing Azure CLI..."
     sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
     sudo sh -c 'echo -e "[azure-cli]\nname=Azure CLI\nbaseurl=https://packages.microsoft.com/yumrepos/azure-cli\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/azure-cli.repo'
-    sudo yum -y install azure-cli
+    sudo yum install azure-cli -y
 }
 
 install_kubectl() 
@@ -150,8 +144,8 @@ function install_pip()
 {
     # Install pip
     echo_header " Installing PIP..."
-    sudo yum -y install epel-release
-    sudo yum -y install python-pip
+    sudo yum install epel-release
+    sudo yum install -y python-pip
     #upgrade pip
     sudo pip install --upgrade pip
 }
@@ -186,8 +180,6 @@ check_for_tool "Eksctl" "eksctl version" "install_eksctl"
 check_for_tool "GCloud SDK" "gcloud -v" "install_gcloud_sdk"
 check_for_tool "Azure CLI" "az -V" "install_azure_cli"
 check_for_tool "Kubectl" "kubectl version" "install_kubectl"
-check_for_tool "Git" "git" "install_git"
-
 
 # Clone Ping Identity Repos, setup docker aliases
 clone_devops_projects

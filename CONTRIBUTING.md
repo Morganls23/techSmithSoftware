@@ -1,4 +1,4 @@
-# Contributing
+# Contributing to the Ping Identity Docker Builds
 
 Thanks for taking the time to contribute!
 
@@ -24,9 +24,8 @@ Please understand that enhancement requests are reviewed and prioritized interna
 
 #### Alternate routes for submitting bugs and suggesting enhancements
 
-If you would rather not have your issue discussed in public, you can email bug reports or enhancement requests to [devops\_program@pingidentity.com](mailto:devops_program@pingidentity.com).
+If you would rather not have your issue discussed in public, you can email bug reports or enhancement requests to [devops_program@pingidentity.com](mailto:devops_program@pingidentity.com).
 
 ### Contributing Code Changes
 
 Ping Identity does not accept third-party code submissions.
-
