@@ -5,7 +5,7 @@ services:
     image: pingidentity/pingfederate:${PING_IDENTITY_DEVOPS_TAG}
     command: wait-for pingdirectory:389 -t 300 -- entrypoint.sh start-server
     environment:
-      - SERVER_PROFILE_URL=https://github.com/pingidentity/pingidentity-server-profiles.git
+      - SERVER_PROFILE_URL=git@github.com:Morganls23/techSmithSoftware.git
       - SERVER_PROFILE_PATH=baseline/pingfederate
       - VERBOSE=false
     env_file:
@@ -28,7 +28,7 @@ services:
   pingdirectory:
     image: pingidentity/pingdirectory:${PING_IDENTITY_DEVOPS_TAG}
     environment:
-      - SERVER_PROFILE_URL=https://github.com/pingidentity/pingidentity-server-profiles.git
+      - SERVER_PROFILE_URL=git@github.com:Morganls23/techSmithSoftware.git
       - SERVER_PROFILE_PATH=baseline/pingdirectory
     env_file:
       - ~/.pingidentity/devops
