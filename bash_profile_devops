@@ -121,9 +121,25 @@ alias pingdownload="docker run --rm -v ~/Downloads:/tmp pingidentity/pingdownloa
 # Docker
 alias dps="run docker ps"
 
-## container
-dsa() { echo "Alias Expansion: ${bold}docker stop all containers${normal}"; docker stop $(docker ps -a -q); }
-dra() { echo "Alias Expansion: ${bold}docker remove all containers${normal}"; docker container rm $(docker ps -a -q); }
+# Stop all running containers
+dsa() 
+{ 
+  echo "Running command to: ${bold}Stop all running containers${normal}";
+  c=$(docker ps -q);
+  if [ ! -z "${c}" ]; then
+    run docker stop ${c}
+  fi
+}
+
+# Remove all stopped containers
+dra() 
+{
+  echo "Running command to: ${bold}Remove all stopped containers${normal}";
+  c=$(docker ps -a -q);
+  if [ ! -z "${c}" ]; then
+    run docker container rm ${c}
+  fi
+}
 alias dce="run docker container exec -it"
 alias dci="run docker container inspect"
 alias dcl="run docker container ls -a"
@@ -142,7 +158,31 @@ alias dil="run docker images"
 alias dir="run docker image rm -f"
 alias dip="run docker image prune -f"
 alias dit="run docker image tag"
-alias diw="dip; dir \$(docker images 'pingidentity/*' -q|sort|uniq)"
+
+# Remove all Ping Identity docker images
+diw()
+{
+  echo "Running command to: ${bold}Remove all Ping Identity Docker images${normal}";
+  dip;
+  i=$(docker images 'pingidentity/*' -q|sort|uniq);
+  if [ ! -z "${i}" ]; then
+    run docker image rm ${i};
+  else
+    echo "***No Ping Identity images present to remove***"
+  fi
+}
+# Remove all docker images
+din()
+{
+  echo "Running command to: ${bold}Remove all Docker images${normal}";
+  dip;
+  i=$( docker images --format '{{.ID}}' )
+  if [ ! -z "${i}" ]; then
+    run docker image rm ${i};
+  else
+    echo "***No images present to remove***"
+  fi
+}
 
 ## volume
 alias dvc="run docker volume create"

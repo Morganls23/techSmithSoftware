@@ -25,7 +25,7 @@ Ping Identity will provide a DevOps Key to any user registered with Ping Identit
   * Request your DEVOPS-KEY from the [FORM](https://docs.google.com/forms/d/e/1FAIpQLSdgEFvqQQNwlsxlT6SaraeDMBoKFjkJVCyMvGPVPKcrzT3yHA/viewform).
 
 Typically, within a few business hours, your personal DEVOPS-USER and DEVOPS-KEY will be 
-sent to your eamil.
+sent to your email.
 
 >Important: Upon receiving your key, ensure that you follow the instructions below for 
 saving these via the `setup` script.
@@ -41,7 +41,7 @@ The best way to save your DevOps User/Key is to use the Ping Identity DevOps uti
 
 >More details on `setup` can be found in the [quickstart](https://pingidentity-devops.gitbook.io/devops/examples/quickstart#clone-github-pingidentity-devops-getting-started).
 
-Simpy run:
+Simply run:
 
 ```text
 ./pingidentity-devops-getting-started/setup
@@ -49,7 +49,7 @@ Simpy run:
 
 and answer the prompts with your DEVOPS User/Key. 
 
-This will place your DEVOPS USER/KEY in to a Ping Identity property file found at
+This will place your DEVOPS USER/KEY into a Ping Identity property file found at
 `~/.pingidentity/devops`.  with the following variable names set (see example below).
 
 ```text
@@ -60,12 +60,12 @@ You can always view these settings with the `denv` command after you've configur
 
 ## Using your DevOps User and Key
 
-When starting an image, you can provide your devops property file `~/.pingidentity/devops` or using the individual environment variables. 
+When starting an image, you can provide your devops property file `~/.pingidentity/devops` or using the individual environment variables.
 
 >The examples provided for standalone and docker-compose 
 are set up to use this property file by default.
 
-For more detail, run the `denv` to get your devops environment information.
+For more detail, run the `denv` to get your DevOps environment information.
 
 ### Example with docker run command
 
@@ -121,7 +121,7 @@ Docker Swarm.
 ...
 ```
 
-## Using an existing Product License file
+## Using an existing Product License file (Server-Profile)
 
 You can also use an existing valid product license file the product/version combo you are running, by placing them into the proper directory of your server profile. The default server profile location and file name for each product are as follows:
 
@@ -131,6 +131,32 @@ Note: You do not need to do this if you are using your DevOps User/Key. If you h
 * PingAccess - `instance/conf/pingaccess.lic`
 * PingDirectory - `instance/PingDirectory.lic`
 * PingDataSync - `instance/PingDirectory.lic`
+
+## Using an existing Product License file (Mounted /opt/in volume)
+
+You can pass the license file to a container via mounting the container's `/opt/in` directory.
+
+Note: You do not need to do this if you are using your DevOps User/Key. If you have provided license files via the volume mount and a DevOps User/Key, it will ignore the DevOps User/Key.
+
+The `/opt/in` volume overlays files onto the products runtime filesystem, the license needs to be in the exact location the product checks for valid licenses.
+
+### Example Mounts
+
+**PingFederate**
+* License file located at: /tmp/pingfederate/instance/server/default/conf/pingfederate.lic
+* Mount: /tmp/pingfederate:/opt/in
+
+**PingAccess**
+* License file located at: /tmp/pingaccess/instance/conf/pingaccess.lic
+* Mount: /tmp/pingaccess:/opt/in
+
+**PingDirectory**
+* License file located at: /tmp/pingdirectory/instance/PingDirectory.lic
+* Mount: /tmp/pingdirectory:/opt/in
+
+**PingDataSync**
+* License file located at: /tmp/pingdatasync/instance/PingDirectory.lic
+* Mount: /tmp/pingdatasync:/opt/in
 
 ## Troubleshooting
 

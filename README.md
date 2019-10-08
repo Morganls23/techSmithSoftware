@@ -1,15 +1,22 @@
-# Ping Identity DevOps - Docker Builds
-Provides all components to build out the Ping Identity DevOps Docker Images for your own devlopment,
-testing and deployments. 
+# Server Profiles
 
-## Documentation
- * The collection of documentation to build out your own Docker Images is located on the [Gitbook-Build Your Own Docker Images](https://pingidentity-devops.gitbook.io/devops/docker-builds)
- * The complete collection of documentation for Ping Identity’s DevOps GitHub repositories is located on [Gitbook](https://pingidentity-devops.gitbook.io/devops/)
+Ping Identity Server Profiles are used to provide the configuration, data, environment details to Ping Identity Docker Images.
 
-## Docker images
+## Available Server Profiles
 
-* A complete listing of Ping Identity's public images used in these examples is available at [Docker Hub](https://hub.docker.com/u/pingidentity/)
+There are several Ping Identity Server Profiles available in the Ping Identity Github repositories. They are outlined in the table below.
 
-## Troubleshooting
-This repository is in active development and has not been officially released. 
-If you experience issues with this project, plese see details on contributing feedback at [Contributing](CONTRIBUTING.md).
+| Server Profile | Description |
+| :--- | :--- |
+| [Getting Started](https://github.com/pingidentity/pingidentity-server-profiles/tree/master/getting-started) | Ping Identity products with basic install/config |
+| [Baseline](https://github.com/pingidentity/pingidentity-server-profiles/tree/master/baseline) | Ping Identity procucts with full integration |
+| [Simple Sync](https://github.com/pingidentity/pingidentity-server-profiles/tree/master/simple-sync) | DataSync server sync'ing between two PingDirectory trees |
+
+## Playground Server Profiles
+
+There is a Github Repository containing samples, experimental, training types of server profiles that may be created to help with examples and getting started projects. These are guaranteed to be documented as they are often one off examples of different concepts. Some of these products include:
+
+| Server Profile | Description |
+| :--- | :--- |
+| [PingFed Cluster](https://github.com/pingidentity/server-profile-pingidentity-playground/tree/master/getting-started-pingfederate-cluster) | Configuring a PingFed cluster with admin/engine nodes |
+| [PingOne for Customer](https://github.com/pingidentity/server-profile-pingidentity-playground/tree/master/pingone-cloud) | Use cases around PingOne for Customer |
